@@ -4,6 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import 'react-toastify/dist/ReactToastify.css';
+import api from '../../Backend/config/api';
 import { ToastContainer } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { TextField, MenuItem, FormControl, InputLabel, Avatar, InputAdornment, IconButton, Input, RadioGroup, FormControlLabel, Radio } from '@mui/material';
@@ -38,7 +39,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/roles', {
+        const response = await api.get('/roles', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
@@ -63,8 +64,7 @@ const EditProfile = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/users/profile', {
-        method: 'GET',
+      const response = await api.get('/users/profile', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -108,8 +108,7 @@ const EditProfile = () => {
 
   console.log("Datos a enviar:", updatedData);
 
-  fetch(`http://localhost:3000/api/users/update/profile/${id}`, {
-    method: 'PUT',
+  api.put(`/users/update/profile/${id}`, updatedData, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`, // usar token actualizado

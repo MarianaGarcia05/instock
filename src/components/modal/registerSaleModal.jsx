@@ -4,6 +4,7 @@ import '../../styles/Modal.css';
 import { toast } from 'react-toastify';
 import * as Io5Icons from 'react-icons/io5';
 import React, { useState, useEffect } from 'react';
+import api from '../../../Backend/config/api';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 
 const RegisterSaleModal = ({ open, onClose, fetchSales, product }) => {
@@ -31,7 +32,7 @@ const RegisterSaleModal = ({ open, onClose, fetchSales, product }) => {
     if (open) {
       const fetchData = async () => {
         try {
-          const providersRes = await axios.get('http://localhost:3000/api/provider');
+          const providersRes = await api.get('/provider');
           setProviders(providersRes.data);
 
           // Obtener usuario logueado
@@ -77,7 +78,7 @@ const RegisterSaleModal = ({ open, onClose, fetchSales, product }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/api/sales', {
+      const response = await api.post('/sales', {
         product_id: product.id,
         provider_id: product.provider_id,
         amount,

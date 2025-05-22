@@ -14,7 +14,7 @@ import CompanyInformation from '../components/CompanyInformation'
 import EditProfile from './EditProfile'
 import Entries from './Entries'
 import Sales from './Sales'
-import Reports from './reports'
+import Reports from './Reports'
 
 const Board = () => {
     return (

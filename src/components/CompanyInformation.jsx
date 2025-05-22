@@ -6,6 +6,7 @@ import * as Hi2Icons from 'react-icons/hi2'
 import { TextField, MenuItem } from '@mui/material'
 import { toast, ToastContainer } from 'react-toastify'
 import React, { useState, useEffect } from 'react';
+import api from '../../Backend/config/api';
 
 const CompanyInformation = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const CompanyInformation = () => {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/company')
+     api.get('/company')
       .then((response) => {
         setFormData(response.data || {});
       })
@@ -34,7 +35,7 @@ const CompanyInformation = () => {
   };
 
   const handleUpdate = () => {
-    axios.put('http://localhost:3000/api/company', formData)
+    api.put('/company', formData)
       .then(() => {
         toast.success('Información actualizada correctamente');
       })

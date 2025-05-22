@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import img from '../assets/loginImg.png'
 import { useNavigate } from 'react-router-dom'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import api from '../../Backend/config/api';
 import { TextField, FormControl, InputLabel, Input, InputAdornment, IconButton } from '@mui/material';
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
 
         try {
             //enviar solicitud de POST al backend
-            const response = await axios.post('http://localhost:3000/api/login', {
+            const response = await api.post('/login', {
                 documentNumber,
                 password
             });

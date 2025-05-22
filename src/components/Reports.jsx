@@ -4,6 +4,7 @@ import '../styles/Reports.css'
 import * as FaIcons from 'react-icons/fa'
 import * as MdIcons from 'react-icons/md'
 import * as Hi2Icons from 'react-icons/hi2'
+import api from '../../Backend/config/api';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const Reports = () => {
@@ -19,15 +20,15 @@ const Reports = () => {
   });
 
   const cargarDatos = () => {
-    axios.get(`http://localhost:3000/api/reports/entradas-vs-salidas?year=${year}&month=${month}`)
+    api.get(`/reports/entradas-vs-salidas?year=${year}&month=${month}`)
       .then(res => setEntradasVsSalidas(res.data))
       .catch(err => console.error('Error Entradas vs Salidas:', err));
 
-    axios.get(`http://localhost:3000/api/reports/top-productos-vendidos?year=${year}&month=${month}`)
+     api.get(`/reports/top-productos-vendidos?year=${year}&month=${month}`)
       .then(res => setTopProductos(res.data))
       .catch(err => console.error('Error Top Productos:', err));
 
-    axios.get(`http://localhost:3000/api/reports/cards-resumen?year=${year}&month=${month}`)
+    api.get(`/reports/cards-resumen?year=${year}&month=${month}`)
       .then(res => setCardsResumen(res.data))
       .catch(err => console.error('Error Cards Resumen:', err));
   };

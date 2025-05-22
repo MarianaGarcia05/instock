@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
 import '../styles/Table.css';
 import * as FaIcons from 'react-icons/fa';
+import api from '../../Backend/config/api';
 import SaleModal from '../components/modal/registerSaleModal';
 
 const RegisterSale = ({ userId }) => {
@@ -30,7 +31,7 @@ const RegisterSale = ({ userId }) => {
   // Obtener productos con stock
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/product/withStock');
+      const response = await api.get('/product/withStock');
       setProducts(response.data);
     } catch (error) {
       console.error('Error al obtener productos:', error);
@@ -40,7 +41,7 @@ const RegisterSale = ({ userId }) => {
   // Obtener proveedores
   const fetchProviders = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/provider');
+      const response = await api.get('/provider');
       const providerMap = {};
       response.data.forEach((p) => {
         providerMap[p.id] = p.companyName;
@@ -54,7 +55,7 @@ const RegisterSale = ({ userId }) => {
   // Obtener ventas (si es necesario)
   const fetchSales = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/sales');
+      const response = await api.get('/sales');
       setSales(response.data);
     } catch (error) {
       console.error('Error al obtener las ventas:', error);
@@ -64,7 +65,7 @@ const RegisterSale = ({ userId }) => {
   // Obtener categorías
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/categories');
+      const response = await api.get('/categories');
       setCategories(response.data);
     } catch (error) {
       console.error('Error al obtener categorías:', error);

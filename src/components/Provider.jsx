@@ -9,6 +9,7 @@ import * as MdIcons from 'react-icons/md'
 import ProviderModal from './modal/providerModal'
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useState, useEffect } from 'react'
+import api from '../../Backend/config/api';
 import { toast, ToastContainer } from 'react-toastify';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, TextField } from '@mui/material';
 
@@ -27,7 +28,7 @@ const Provider = () => {
     }, []);
 
     const fetchProvider = () => {
-        axios.get('http://localhost:3000/api/provider')
+        api.get('/provider')
             .then((response) => setProvider(response.data))
             .catch((error) => console.error('Error al obtener los Proveedores', error));
     }
@@ -80,7 +81,7 @@ const Provider = () => {
             cancelButtonText: 'Cancelar',
         }).then((results) => {
             if (results.isConfirmed) {
-                axios.delete(`http://localhost:3000/api/provider/${providerId}`)
+                api.delete(`/provider/${providerId}`)
                     .then(() => {
                         toast.success('Proveedor eliminado éxitosamente');
                         fetchProvider();
@@ -130,7 +131,7 @@ const Provider = () => {
     return (
         <div className="tableContent">
             <div className="optionsData">
-                <button className="btnRegister"  onClick={() => handleOpenModal('create')}>
+                <button className="btnRegister" onClick={() => handleOpenModal('create')}>
                     <FaIcons.FaPlus />  Registrar vendedor
                 </button>
                 <button

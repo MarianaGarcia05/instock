@@ -10,6 +10,7 @@ import * as MdIcons from 'react-icons/md'
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useState, useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
+import api from '../../Backend/config/api';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, TextField } from '@mui/material';
 
 const User = () => {
@@ -30,9 +31,9 @@ const User = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/roles');
+      const response = await api.get('/roles');
       const rolesData = response.data.reduce((acc, role) => {
-        acc[role.id] = role.rol; // Mapea ID a nombre del rol
+        acc[role.id] = role.rol; 
         return acc;
       }, {});
       setRoles(rolesData);
@@ -42,7 +43,7 @@ const User = () => {
   };
 
   const fetchUsers = () => {
-    axios.get('http://localhost:3000/api/users')
+     api.get('/users')
       .then((response) => setUsers(response.data))
       .catch((error) => console.error('Error al obtener los usuarios', error));
   }
@@ -101,7 +102,7 @@ const User = () => {
       cancelButtonText: 'Cancelar',
     }).then((results) => {
       if (results.isConfirmed) {
-        axios.delete(`http://localhost:3000/api/users/${userId}`)
+        api.delete(`/users/${userId}`)
           .then(() => {
             toast.success('Usuario eliminado éxitosamente');
             fetchUsers();

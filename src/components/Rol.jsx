@@ -10,8 +10,8 @@ import * as MdIcons from 'react-icons/md'
 import 'react-toastify/dist/ReactToastify.css'
 import React, { useEffect, useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import api from '../../Backend/config/api';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, TextField, Button } from '@mui/material';
-
 
 const Rol = () => {
     const [page, setPage] = useState(0);
@@ -28,7 +28,7 @@ const Rol = () => {
     }, []);
 
     const fetchRoles = () => {
-        axios.get('http://localhost:3000/api/roles')
+        api.get('/roles')
             .then((response) => setRoles(response.data))
             .catch((error) => console.error('Error al obtener los roles:', error));
     };
@@ -79,7 +79,7 @@ const Rol = () => {
             cancelButtonText: 'Cancelar',
         }).then((results) => {
             if (results.isConfirmed) {
-                axios.delete(`http://localhost:3000/api/roles/${roleId}`)
+                api.delete(`/roles/${roleId}`)
                     .then(() => {
                         toast.success('Rol eliminado con éxito');
                         fetchRoles();

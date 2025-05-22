@@ -2,6 +2,7 @@ import '../App.css'
 import React, { useState, useEffect } from 'react'
 import '../styles/Sidebar.css'
 import Logo from '../assets/Logo.png'
+import api from '../../Backend/config/api';
 import * as TbIcons from 'react-icons/tb'
 import * as FaIcons from 'react-icons/fa'
 import * as Fa6Icons from 'react-icons/fa6'

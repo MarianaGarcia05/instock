@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import React, { useState, useEffect } from 'react';
 import { IoAddCircleOutline } from 'react-icons/io5';
 import { toast, ToastContainer } from 'react-toastify'
+import api from '../../Backend/config/api';
 import { Table, TableBody, TableCell, Button, TableContainer, TableHead, TablePagination, TableRow, Paper, TextField } from '@mui/material';
 
 const Sales = () => {
@@ -21,6 +22,7 @@ const Sales = () => {
     const [users, setUsers] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(7);
     const [modalOpen, setModalOpen] = useState(false);
+    const [FilteredSales, setFilteredSales] = useState([]);
 
     useEffect(() => {
         fetchSales();
@@ -31,7 +33,7 @@ const Sales = () => {
 
     const fetchSales = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/sales');
+            const response = await api.get('/product');
             setSales(response.data);
             setFilteredSales(response.data);
         } catch (error) {
@@ -41,8 +43,7 @@ const Sales = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/product');
-
+            const response = await api.get('/product');
             const productsData = response.data.reduce((acc, product) => {
                 acc[product.id] = product.productName;
                 return acc;
@@ -57,7 +58,7 @@ const Sales = () => {
 
     const fetchProviders = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/provider');
+            const response = await api.get('/provider');
             const providersData = response.data.reduce((acc, provider) => {
                 acc[provider.id] = provider.companyName;
                 return acc;
@@ -70,7 +71,7 @@ const Sales = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/users');
+            const response = await api.get('/users');
             const usersData = response.data.reduce((acc, user) => {
                 acc[user.id] = `${user.names} ${user.surnames}`;
                 return acc;

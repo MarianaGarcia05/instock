@@ -6,6 +6,7 @@ import * as Io5Icons from 'react-icons/io5';
 import React, { useState, useEffect } from 'react';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
+import api from '../../../Backend/config/api';
 
 const EntriesModal = ({ open, onClose, fetchEntries }) => {
   const [product, setProduct] = useState(null);
@@ -24,8 +25,9 @@ const EntriesModal = ({ open, onClose, fetchEntries }) => {
       const fetchData = async () => {
         try {
           const [productsRes, providersRes] = await Promise.all([
-            axios.get('http://localhost:3000/api/product'),
-            axios.get('http://localhost:3000/api/provider'),
+            api.get('/product'),
+            api.get('/provider'),
+
           ]);
 
           setProducts(productsRes.data);
@@ -62,7 +64,7 @@ const EntriesModal = ({ open, onClose, fetchEntries }) => {
     }
 
     try {
-      await axios.post('http://localhost:3000/api/entries', {
+      await api.post('/entries', {
         product_id: product.id,
         provider_id: provider.id,
         quantity,
@@ -80,17 +82,17 @@ const EntriesModal = ({ open, onClose, fetchEntries }) => {
       toast.error('Error al registrar la entrada');
     }
   };
-  
+
   useEffect(() => {
-  if (!open) {
-    setProduct(null);
-    setProvider(null);
-    setQuantity('');
-    setUnitCost('');
-    setTotalCost('');
-    setExpirationDate('');
-  }
-}, [open]);
+    if (!open) {
+      setProduct(null);
+      setProvider(null);
+      setQuantity('');
+      setUnitCost('');
+      setTotalCost('');
+      setExpirationDate('');
+    }
+  }, [open]);
 
 
   return (

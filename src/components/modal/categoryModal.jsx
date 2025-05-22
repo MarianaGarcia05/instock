@@ -4,6 +4,7 @@ import '../../styles/Modal.css'
 import { toast } from 'react-toastify'
 import * as Io5Icons from 'react-icons/io5'
 import React, { useState, useEffect } from 'react'
+import api from '../../../Backend/config/api';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem } from '@mui/material';
 
 const categoryModal = ({ open, onClose, fetchCategories, mode, categoriesData }) => {
@@ -20,13 +21,13 @@ const categoryModal = ({ open, onClose, fetchCategories, mode, categoriesData })
   const handleSubmit = async () => {
     try {
       if (mode === 'create') {
-        await axios.post('http://localhost:3000/api/categories', {
+        await api.post('/categories', {
           category,
           status,
         });
         toast.success('Categoría creada exitosamente');
       } else if (mode === 'edit') {
-        await axios.put(`http://localhost:3000/api/categories/${categoriesData.id}`, {
+        await api.put(`/categories/${categoriesData.id}`, {
           category,
           status
         });

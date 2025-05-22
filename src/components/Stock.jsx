@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import ExcelJS from 'exceljs';
+import api from '../../Backend/config/api';
 import '../styles/Table.css'
 import * as FaIcons from 'react-icons/fa'
 import { saveAs } from 'file-saver';
@@ -20,7 +21,7 @@ const Stock = () => {
   }, []);
 
   const fetchStock = () => {
-    axios.get('http://localhost:3000/api/stock')
+     api.get('/stock')
       .then(response => setStockItems(response.data))
       .catch(error => {
         console.error('Error al obtener el stock:', error);

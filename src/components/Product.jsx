@@ -9,6 +9,7 @@ import ProductModal from './modal/productModal'
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useState, useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
+import api from '../../Backend/config/api';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, TextField } from '@mui/material';
 
 
@@ -32,7 +33,7 @@ const Product = () => {
 
   const fetchProvider = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/provider');
+      const response = await api.get('/provider');
       const providerData = response.data.reduce((acc, provider) => {
         acc[provider.id] = provider.companyName;
         return acc;
@@ -45,7 +46,7 @@ const Product = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/categories');
+      const response = await api.get('/categories');
       const categoriesData = response.data.reduce((acc, category) => {
         acc[category.id] = category.category;
         return acc;
@@ -57,7 +58,7 @@ const Product = () => {
   };
 
   const fetchProducts = () => {
-    axios.get('http://localhost:3000/api/product')
+    api.get('/product')
       .then((response) => setProducts(response.data))
       .catch((error) => console.error('Error al obtener los productos:', error));
   };
@@ -107,7 +108,7 @@ const Product = () => {
       cancelButtonText: 'Cancelar',
     }).then((results) => {
       if (results.isConfirmed) {
-        axios.delete(`http://localhost:3000/api/product/${productsId}`)
+        api.delete(`/product/${productsId}`)
           .then(() => {
             toast.success('Producto eliminada con éxito');
             fetchProducts();

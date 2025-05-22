@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import api from '../../Backend/config/api';
 
 const ResetPassword = () => {
     const { token } = useParams();
@@ -8,7 +9,7 @@ const ResetPassword = () => {
 
     const handleReset = async () => {
         try {
-            await axios.post('http://localhost:3000/api/reset-password', { token, newPassword });
+            await api.post('/reset-password', { token, newPassword });
             alert('Contraseña restablecida correctamente.');
         } catch (error) {
             alert('Error al restablecer la contraseña.');

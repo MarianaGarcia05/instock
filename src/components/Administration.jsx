@@ -8,6 +8,7 @@ import * as AiIcons from 'react-icons/ai';
 import baseData from '../json/Administration.json';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from '../../Backend/config/api';
 
 const Administration = () => {
   const [user, setUser] = useState(null);
@@ -28,8 +29,7 @@ const Administration = () => {
     }
 
     // Obtener los datos dinámicos del backend
-    axios
-      .get('http://localhost:3000/api/counter/counts')
+      api.get('/counter/counts')
       .then((response) => {
         const countsData = response.data;
 

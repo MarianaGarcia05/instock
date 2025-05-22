@@ -3,6 +3,7 @@ import '../../styles/Modal.css'
 import { toast } from 'react-toastify'
 import * as Io5Icons from 'react-icons/io5'
 import React, { useState, useEffect } from 'react'
+import api from '../../../Backend/config/api';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem} from '@mui/material';
 
 const providerModal = ({ open, onClose, fetchProvider, mode, providerData }) => {
@@ -29,7 +30,7 @@ const providerModal = ({ open, onClose, fetchProvider, mode, providerData }) => 
   const handleSubmit = async () => {
     try {
       if (mode === 'create') {
-        await axios.post('http://localhost:3000/api/provider', {
+        await api.post('/provider', {
           documentType,
           documentNumber,
           companyName,
@@ -40,7 +41,7 @@ const providerModal = ({ open, onClose, fetchProvider, mode, providerData }) => 
         });
         toast.success('Proveedor creado exitosamente');
       } else if (mode === 'edit') {
-        await axios.put(`http://localhost:3000/api/provider/${providerData.id}`, {
+        await api.put(`/provider/${providerData.id}`, {
           documentType,
           documentNumber,
           companyName,

@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import CategoryModal from './modal/categoryModal'
 import React, { useState, useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import api from '../../Backend/config/api';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, TextField } from '@mui/material';
 
 const Categories = () => {
@@ -27,7 +28,7 @@ const Categories = () => {
   }, []);
 
   const fetchCategories = () => {
-    axios.get('http://localhost:3000/api/categories')
+    api.get('/categories')
       .then((response) => setCategories(response.data))
       .catch((error) => console.error('Error al obtener las categorias:', error));
   };
@@ -77,7 +78,7 @@ const Categories = () => {
       cancelButtonText: 'Cancelar',
     }).then((results) => {
       if (results.isConfirmed) {
-        axios.delete(`http://localhost:3000/api/categories/${categoriesId}`)
+        api.delete(`/categories/${categoriesId}`)
           .then(() => {
             toast.success('Categoría eliminada con éxito');
             fetchCategories();

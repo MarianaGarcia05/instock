@@ -7,6 +7,7 @@ import * as Io5Icons from 'react-icons/io5'
 import React, { useState, useEffect } from 'react'
 import { ArrowUpward } from '@mui/icons-material'
 import defaultProductImage from '../../assets/imgDefecto.png';
+import api from '../../../Backend/config/api';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem, Button, Avatar } from '@mui/material';
 
 const presentations = [
@@ -45,7 +46,7 @@ const ProductModal = ({ open, onClose, fetchProducts, mode, productsData }) => {
   useEffect(() => {
     const fetchProvider = async () => {
       try {
-        const { data } = await axios.get('http://localhost:3000/api/provider');
+        const { data } = await api.get('/provider');
         setProvider(data);
       } catch (error) {
         console.error('Error al obtener la empresa:', error);
@@ -57,7 +58,7 @@ const ProductModal = ({ open, onClose, fetchProducts, mode, productsData }) => {
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const { data } = await axios.get('http://localhost:3000/api/categories');
+        const { data } = await api.get('/categories');
         setCategory(data);
       } catch (error) {
         console.error('Error al obtener la categoría:', error);
@@ -87,7 +88,7 @@ const ProductModal = ({ open, onClose, fetchProducts, mode, productsData }) => {
     try {
 
       if (mode === 'create') {
-        await axios.post('http://localhost:3000/api/product', {
+        await api.post('/product', {
           barCode,
           productName,
           salePrice,
@@ -101,7 +102,7 @@ const ProductModal = ({ open, onClose, fetchProducts, mode, productsData }) => {
         });
         toast.success('Producto creado exitosamente');
       } else if (mode === 'edit') {
-        await axios.put(`http://localhost:3000/api/product/${productsData.id}`, {
+        await api.put(`/product/${productsData.id}`, {
           barCode,
           productName,
           salePrice,

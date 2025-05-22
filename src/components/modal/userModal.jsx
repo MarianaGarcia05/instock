@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import * as Io5Icons from 'react-icons/io5'
 import React, { useState, useEffect } from 'react'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import api from '../../../Backend/config/api';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem, FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton, RadioGroup, Radio, Input, FormControlLabel, Avatar } from '@mui/material';
 
 const userModal = ({ open, onClose, fetchUsers, mode, userData }) => {
@@ -37,7 +38,7 @@ const userModal = ({ open, onClose, fetchUsers, mode, userData }) => {
   useEffect(() => {
     const fetchRoles = async () => {
       try {
-        const { data } = await axios.get('http://localhost:3000/api/roles');
+        const { data } = await api.get('/roles');
         setRoles(data);
       } catch (error) {
         console.error('Error al obtener roles:', error);
@@ -63,7 +64,7 @@ const userModal = ({ open, onClose, fetchUsers, mode, userData }) => {
   const handleSubmit = async () => {
     try {
       if (mode === 'create') {
-        await axios.post('http://localhost:3000/api/users', {
+        await api.post('/users', {
           documentType,
           documentNumber,
           names,
@@ -76,7 +77,7 @@ const userModal = ({ open, onClose, fetchUsers, mode, userData }) => {
         });
         toast.success('Usuario creado exitosamente');
       } else if (mode === 'edit') {
-        await axios.put(`http://localhost:3000/api/users/${userData.id}`, {
+        await api.put(`/users/${userData.id}`, {
           documentType,
           documentNumber,
           names,

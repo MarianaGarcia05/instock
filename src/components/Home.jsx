@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Home.css';
+import api from '../../Backend/config/api';
 
 const Home = () => {
   const [productosMasVendidos, setProductosMasVendidos] = useState([]);
@@ -20,7 +21,7 @@ const Home = () => {
   const [lowStock, setLowStock] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/stock')
+    api.get('/stock')
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -32,7 +33,7 @@ const Home = () => {
   const [categoriasMasVendidas, setCategoriasMasVendidas] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/reports/categorias-mas-vendidas')
+    api.get('/reports/categorias-mas-vendidas')
       .then(res => res.json())
       .then(data => {
         setCategoriasMasVendidas(data);
@@ -44,7 +45,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/reports/top-productos-vendidos?year=2025&month=5')
+    api.get('/reports/top-productos-vendidos?year=2025&month=5')
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data.productos)) {

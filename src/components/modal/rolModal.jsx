@@ -4,6 +4,7 @@ import '../../styles/Modal.css'
 import { toast } from 'react-toastify'
 import * as Io5Icons from 'react-icons/io5'
 import React, { useState, useEffect } from 'react'
+import api from '../../../Backend/config/api';
 import { TextField, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem } from '@mui/material';
 
 const rolModal = ({ open, onClose, fetchRoles, mode, roleData }) => {
@@ -20,13 +21,13 @@ const rolModal = ({ open, onClose, fetchRoles, mode, roleData }) => {
   const handleSubmit = async () => {
     try {
       if (mode === 'create') {
-        await axios.post('http://localhost:3000/api/roles', {
+        await api.post('/roles', {
           rol,
           status
         });
         toast.success('Rol creada exitosamente');
       } else if (mode === 'edit') {
-        await axios.put(`http://localhost:3000/api/roles/${roleData.id}`, {
+        await api.put(`/roles/${roleData.id}`, {
           rol,
           status
         });
