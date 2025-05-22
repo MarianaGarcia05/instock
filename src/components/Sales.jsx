@@ -33,7 +33,7 @@ const Sales = () => {
 
     const fetchSales = async () => {
         try {
-            const response = await api.get('/product');
+            const response = await api.get('/sales');
             setSales(response.data);
             setFilteredSales(response.data);
         } catch (error) {

@@ -8,21 +8,21 @@ const Home = () => {
   const carruselRef = useRef(null);
 
   const scroll = (direction) => {
-  if (carruselRef.current) {
-    const carrusel = carruselRef.current;
-    const cardWidth = carrusel.querySelector('.cardCarrusel')?.offsetWidth || 0;
-    const scrollAmount = cardWidth * 3; // mueve 3 tarjetas
+    if (carruselRef.current) {
+      const carrusel = carruselRef.current;
+      const cardWidth = carrusel.querySelector('.cardCarrusel')?.offsetWidth || 0;
+      const scrollAmount = cardWidth * 3; // mueve 3 tarjetas
 
-    carrusel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-  }
-};
+      carrusel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+  };
 
 
   const [lowStock, setLowStock] = useState([]);
 
   useEffect(() => {
     api.get('/stock')
-      .then(response => response.json())
+      .then(response => response.data)
       .then(data => {
         console.log(data);
         const lowStockProducts = data.filter(item => item.stock <= 5);
@@ -34,7 +34,7 @@ const Home = () => {
 
   useEffect(() => {
     api.get('/reports/categorias-mas-vendidas')
-      .then(res => res.json())
+      .then(res => res.data)
       .then(data => {
         setCategoriasMasVendidas(data);
       })
@@ -46,7 +46,7 @@ const Home = () => {
 
   useEffect(() => {
     api.get('/reports/top-productos-vendidos?year=2025&month=5')
-      .then((res) => res.json())
+      .then((res) => res.data)
       .then((data) => {
         if (Array.isArray(data.productos)) {
           setProductosMasVendidos(data.productos);

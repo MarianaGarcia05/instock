@@ -44,104 +44,101 @@ const EditProfile = () => {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
         });
-        const data = await response.json();
-        setRoles(data);
+
+        setRoles(response.data); 
       } catch (error) {
         console.error('Error al obtener roles:', error);
       }
     };
-
     fetchRoles();
   }, []);
 
 
   useEffect(() => {
-  const fetchUserData = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      console.error('No hay token almacenado');
-      return;
+    const fetchUserData = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.error('No hay token almacenado');
+    return;
+  }
+
+  try {
+    const response = await api.get('/users/profile', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    });
+
+    const newToken = response.headers['Authorization'];
+    if (newToken) {
+      localStorage.setItem('token', newToken.split(' ')[1]);
     }
 
-    try {
-      const response = await api.get('/users/profile', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        }
-      });
-
-      // Si viene nuevo token en la respuesta, actualizarlo en localStorage
-      const newToken = response.headers.get('Authorization');
-      if (newToken) {
-        localStorage.setItem('token', newToken.split(' ')[1]);
-      }
-
-      if (!response.ok) {
-        throw new Error('Error al obtener datos del usuario');
-      }
-
-      const data = await response.json();
-      setUserData(data);
-      setSelectedAvatar(data.avatar);
-    } catch (error) {
-      console.error('Error:', error);
+    if (response.status !== 200) {
+      throw new Error('Error al obtener datos del usuario');
     }
-  };
 
-  fetchUserData();
-}, [id]);
+    setUserData(response.data);
+    setSelectedAvatar(response.data.avatar);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+    fetchUserData();
+  }, [id]);
 
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => event.preventDefault();
 
   const handleSubmit = (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const token = localStorage.getItem('token'); // Obtener token actualizado
+    const token = localStorage.getItem('token'); // Obtener token actualizado
 
-  const updatedData = {
-    ...userData,
-    avatar: selectedAvatar,
-  };
+    const updatedData = {
+      ...userData,
+      avatar: selectedAvatar,
+    };
 
-  console.log("Datos a enviar:", updatedData);
+    console.log("Datos a enviar:", updatedData);
 
-  api.put(`/users/update/profile/${id}`, updatedData, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`, // usar token actualizado
-    },
-    body: JSON.stringify(updatedData),
-  })
-    .then(async response => {
-      // Si viene nuevo token, actualizarlo también aquí
-      const newToken = response.headers.get('Authorization');
-      if (newToken) {
-        localStorage.setItem('token', newToken.split(' ')[1]);
-      }
-
-      const data = await response.json();
-
-      if (data.success) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Perfil editado',
-          text: data.message,
-          confirmButtonColor: '#00891B',
-          confirmButtonText: 'Aceptar'
-        });
-        navigate(`/dashboard/editProfile/${id}`);
-      } else {
-        toast.error(data.error || data.message || 'Error al actualizar el perfil');
-      }
+    api.put(`/users/update/profile/${id}`, updatedData, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, // usar token actualizado
+      },
+      body: JSON.stringify(updatedData),
     })
-    .catch(error => {
-      console.error('Error:', error);
-      toast.error('Ocurrió un error al actualizar el perfil');
-    });
-};
+      .then(async response => {
+        // Si viene nuevo token, actualizarlo también aquí
+        const newToken = response.headers.get('Authorization');
+        if (newToken) {
+          localStorage.setItem('token', newToken.split(' ')[1]);
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Perfil editado',
+            text: data.message,
+            confirmButtonColor: '#00891B',
+            confirmButtonText: 'Aceptar'
+          });
+          navigate(`/dashboard/editProfile/${id}`);
+        } else {
+          toast.error(data.error || data.message || 'Error al actualizar el perfil');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        toast.error('Ocurrió un error al actualizar el perfil');
+      });
+  };
 
 
   return (
