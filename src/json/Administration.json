@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Proveedores",
+    "icon": "FaTruckFast",
+    "path": "/dashboard/provider"
+  },
+  {
+    "id": 2,
+    "name": "Categorías",
+    "icon": "TbCategoryFilled",
+    "path": "/dashboard/categories"
+  },
+  {
+    "id": 3,
+    "name": "Usuarios",
+    "icon": "FaUserGear",
+    "path": "/dashboard/user"
+  },
+  {
+    "id": 4,
+    "name": "Productos",
+    "icon": "IoCopy",
+    "path": "/dashboard/product"
+  },
+  {
+    "id": 5,
+    "name": "Rol",
+    "icon": "FaClipboardUser",
+    "path": "/dashboard/rol"
+  },
+  {
+    "id":6,
+    "name": "Ventas",
+    "icon": "AiFillDollarCircle",
+    "path": "/dashboard/sales"
+  }
+]

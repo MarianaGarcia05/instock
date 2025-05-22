@@ -1,0 +1,61 @@
+.contentEditProfile{
+    margin: 5rem;
+    padding: 2rem;
+}
+
+.contentEditProfile{
+    padding: 3rem 4rem 1rem;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.contentEditProfile h3 {
+    gap: 0.5rem;
+    display: flex;
+    font-size: 22px;
+    color: #00891B;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.formEditProfile{
+    display: grid;
+    row-gap: 3.5rem;
+    padding: 1rem;
+    column-gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.btnUpdate{
+    width: 8.5rem;
+    height: 2.3rem;
+    color: #fff;
+    margin: 2rem 0rem 0rem;
+    padding: 0.5rem;
+    font-size: 15px;
+    border-radius: 100px;
+    background-color: #145A32;
+    transition: all 0.3s ease;
+}
+
+.btnUpdate:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.textAvatar{
+    display: flex;
+    color: #5D5D5D;
+    align-items: center;
+    margin: 2rem 0 1rem;
+}
+
+/* .css-1mac7pt-MuiFormGroup-root{
+    gap: 10px;
+    margin-top: 1rem;
+    align-items: center;
+    justify-items: center;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+} */

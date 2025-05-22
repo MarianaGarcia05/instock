@@ -1,0 +1,44 @@
+.companyInformationContent{
+    margin: 2rem;
+}
+
+.dataCompany{
+    display: flex;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formDataCompany{
+    display: grid;
+    row-gap: 2rem;
+    padding: 1rem;
+    column-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.titleDataCompany{
+    display: flex;
+    color: #5D5D5D;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.btnCompany{
+    color: #fff;
+    margin-top: 3rem;
+    padding: 0.8rem 2rem;
+    font-size: 15px;
+    border-radius: 100px;
+    background-color: #145A32;
+    transition: all 0.3s ease;
+}
+
+.btnCompany:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+}
+    

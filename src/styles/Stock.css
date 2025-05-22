@@ -1,0 +1,123 @@
+.stockContainer {
+    margin: 5rem 5rem 0;
+    overflow-y: auto;
+}
+
+.stockHeader {
+    display: grid;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.stockTitle {
+    gap: 0.5rem;
+    display: flex;
+    font-size: 26px;
+    color: #145A32;
+    align-items: center;
+}
+
+.stockGrid {
+    display: grid;
+    margin-top: 2rem;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.stockCard {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.cardHeader {
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.normalStock {
+    background-color: #145A32;
+    color: white;
+
+}
+
+.lowStock {
+    background-color: #D32F2F;
+    color: white;
+}
+
+
+.stockBody {
+    padding: 15px;
+    color: black;
+}
+
+.stockBody p {
+    margin-bottom: 0.5rem;
+}
+
+.stockBody strong {
+    color: #145A32;
+}
+
+.btnPaginations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    gap: 10px;
+}
+
+.btnPaginations span {
+    font-size: 14px;
+}
+
+.paginationControls {
+    background-color: #386641;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.paginationControls:hover {
+    background-color: #6A994E;
+}
+
+.paginationControls:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.productImage {
+    display: block; 
+    width: 100%;  
+    height: auto; 
+    max-height: 150px; 
+    object-fit: contain;  
+    margin: 0 auto; 
+}
+
+
+.productDetails {
+    padding: 10px;
+    text-align: left;
+}
+
+.productDetails p {
+    margin: 5px 0;
+}
+
+button {
+    margin-top: 10px;
+    cursor: pointer;
+}

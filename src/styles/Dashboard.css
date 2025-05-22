@@ -1,0 +1,18 @@
+.contentDashboard {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #ededed;
+}
+
+.contentDashboard > .wrapperContent {
+    flex: 1;
+    display: flex;
+}
+
+.boardWrapper {
+    flex-grow: 1;            
+    display: flex;
+    align-items: center;     
+    justify-content: center; 
+}

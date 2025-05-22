@@ -1,0 +1,117 @@
+.tableContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    width: 70rem;
+    margin-top: 4rem;
+}
+
+.optionsData {
+    display: grid;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.optionsData2 {
+    display: grid;
+    margin-bottom: 2rem;
+    margin-left: 8rem;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.optionsDataSales {
+    display: grid;
+    margin-bottom: 2rem;
+    align-items: center;
+    margin-left: 9rem;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btnRegister {
+    gap: 1rem;
+    width: 218px;
+    display: flex;
+    padding: 1.2rem;
+    font-size: 16px;
+    color: #5D5D5D;
+    background: #fff;
+    align-items: center;
+    border-radius: 100px;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btnRegister:hover {
+    color: #145A32;
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 0px 4px 4px rgba(20, 90, 50, 0.25);
+}
+
+.btnDownload{
+    width: 3rem;
+    height: 3rem;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 20px;
+    margin-left: -7.5rem;
+    transition: all 0.3s ease;
+    background-color: #145A32;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btnDownload:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    background-color: #00891B;
+    box-shadow: 0px 4px 4px rgba(20, 90, 50, 0.25);
+}
+
+.action{
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+.actionIcon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #5D5D5D;
+}
+
+#deleteIcon {
+    margin-left: 1rem;
+    font-size: 23px;
+}
+
+.actionIcon:hover {
+    color: #145A32;
+}
+
+.optionsSale {
+  display: flex;
+  gap: 8rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  align-items: flex-end;
+}
+
+.buscadorSales {
+  flex: 1;
+}
+
+.categoriaSelect {
+  width: 220px;
+}
+
+.salesContainer{
+    margin: 4rem;
+}

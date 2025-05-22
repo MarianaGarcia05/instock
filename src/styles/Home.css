@@ -1,0 +1,228 @@
+.contenedorHome {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem;
+  width: 70rem;
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  width: 100%;
+  background: url('../assets/Banner.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 2.8rem;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  padding: 40px;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+  color: #0adf15;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #e5e5e5;
+}
+
+/* INICIO SECCIÓN */
+
+.titulosHome {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  margin-top: 4rem;
+  color: #2b2b2b;
+  text-transform: uppercase;
+  font-family: "Racing", sans-serif;
+}
+
+/* CARRUSEL */
+.carrusel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 20px auto;
+  width: 100%;
+  max-width: calc(250px * 3 + 80px); /* 3 tarjetas + espacio entre flechas */
+  overflow: hidden;
+}
+
+.carrusel {
+  display: flex;
+  padding: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  transition: transform 0.5s ease-in-out;
+  scroll-snap-type: x mandatory;
+  max-width: calc(250px * 3 + 32px);
+}
+
+.carrusel::-webkit-scrollbar {
+  display: none;
+}
+
+.cardCarrusel {
+  min-width: 250px;
+  max-width: 250px;
+  margin-right: 16px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+.cardCarrusel:hover {
+  transform: scale(1.05);
+}
+
+.cardCarrusel img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cardCarrusel h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.cardCarrusel p {
+  font-size: 14px;
+  color: #666;
+}
+
+.btn-carrusel {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 32px;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.btn-carrusel:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+/* productos con stock bajo */
+.mensaje-sin-stock {
+  color: #666;
+}
+
+.grid-stock {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-producto {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card-producto:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.imagen-producto {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.nombre-producto {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.stock-producto {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.sin-stock {
+  color: red;
+  font-weight: bold;
+}
+
+.stock-bajo {
+  color: orange;
+  font-weight: bold;
+}
+
+.grid-categorias {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card-categoria {
+  background-color: #f6fcdf;
+  border-radius: 12px;
+  padding: 1rem;
+  /* width: 15rem; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-categoria:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-categoria h3 {
+  font-size: 1.2rem;
+  color: #386641;
+  margin-bottom: 0.5rem;
+}
+
+.card-categoria p {
+  font-size: 1rem;
+  color: #333;
+}

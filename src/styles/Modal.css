@@ -1,0 +1,76 @@
+.modalHeader{
+    display: flex;
+    color: #fff;
+    align-items: center;
+    background: #145A32;
+    font-family: "Imprima", serif;
+    justify-content: space-between;
+}
+
+.iconClosedModal{
+    font-size: 28px;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+
+.iconClosedModal:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.contentModal{
+    display: grid;
+    row-gap: 2rem;
+    padding: 1rem;
+    column-gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.avatar, .Expiration{
+    padding-left: 0.8rem;
+}
+
+.btnRegisterModal{
+    width: 8.5rem;
+    height: 2.3rem;
+    color: #fff;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 15px;
+    border-radius: 100px;
+    background-color: #145A32;
+    transition: all 0.3s ease;
+}
+
+.btnRegisterModal:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.avatar h4, .Expiration h4 {
+    margin-top: 1rem;
+    font-size: 15px;
+    color: #145A32;
+    position: relative;
+    display: inline-block; 
+    padding-bottom: 5px; 
+}
+
+.avatar h4::after, .Expiration h4::after {
+    left: 0;
+    bottom: 0;
+    content: ""; 
+    width: 100%; 
+    height: 1px; 
+    position: absolute;
+    border-bottom: 1px dotted #145A32; /* Línea punteada */
+}
+
+.selectedExpiration{
+    display: grid;
+    row-gap: 2rem;
+    padding: 1rem;
+    column-gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+}

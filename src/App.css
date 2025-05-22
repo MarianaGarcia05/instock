@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Catamaran:wght@100..900&family=Imprima&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    list-style: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    font-family: "Imprima", serif !important;
+}
+
+.css-1orzuox-MuiTableCell-root{
+    text-align: center !important;
+    font-size: 16px !important;
+    font-family: "Imprima", serif !important;
+}
+
+.css-1dc80h3-MuiTableCell-root{
+    text-transform: capitalize;
+    text-align: center !important;
+    font-family: "Imprima", serif !important;
+}
+
+.css-voecp4-MuiInputBase-input-MuiFilledInput-input, .css-rvoa5x-MuiTypography-root-MuiDialogTitle-root{
+    font-family: "Imprima", serif !important;
+}
+
+.css-1a7iywq-MuiTableHead-root {
+    background: #145A32;
+}
+
+.css-1orzuox-MuiTableCell-root {
+    color: #fff !important;
+}
+
+.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input{
+    text-transform: capitalize;
+}
+
+.css-oegngy-MuiInputBase-root-MuiTablePagination-select, .css-s09cke-MuiTablePagination-selectLabel{
+    display: none !important;
+}
+
+.css-1cmet5c-MuiInputBase-root-MuiInput-root{
+    font-size: 18px !important;
+    color: #145A32 !important;
+}
+
+.css-1yrc8ca-MuiInputBase-input-MuiInput-input.Mui-disabled{
+    -webkit-text-fill-color: #145A32 !important;
+}

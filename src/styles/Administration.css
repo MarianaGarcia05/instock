@@ -1,0 +1,74 @@
+.administrationContent{
+    margin: 5rem 5rem 0;
+    /* padding: 2rem; */
+    overflow-y: auto;
+}
+
+.title{
+    gap: 0.5rem;
+    display: flex;
+    font-size: 26px;
+    color: #00891B;
+    align-items: center;
+}
+
+.iconTitle{
+    font-size: 30px;
+}
+
+.text{
+    font-size: 18px;
+    margin-top: 1rem;
+    line-height: 1.5;
+}
+
+.nameText{
+    font-weight: bolder;
+}
+
+.cardContent{
+    margin: 2rem 8rem;
+    display: grid;
+    grid-row-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card{
+    width: 11rem;
+    height: auto;
+    padding: 1rem;
+    color: #5D5D5D;
+    text-align: center;
+    border-radius: 8px;
+    background: #fff;
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.card:hover{
+    color: #00891B;
+    transform: scale(1.01);
+    border: 1px solid #00891B;
+}
+
+.content{
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid #ddd;
+}
+
+.header h2{
+    font-size: 16px;
+}
+
+.content .icon{
+    display: flex;
+    font-size: 5rem;
+    justify-content: center;
+}
